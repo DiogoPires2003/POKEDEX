@@ -106,7 +106,7 @@ STATICFILES_DIRS = [
 ]
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'

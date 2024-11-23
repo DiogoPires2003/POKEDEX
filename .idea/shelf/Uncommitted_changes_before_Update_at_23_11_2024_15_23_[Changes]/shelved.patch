@@ -1,0 +1,66 @@
+Index: pokedex_app/apps.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.apps import AppConfig\r\n\r\n\r\nclass PokedexAppConfig(AppConfig):\r\n    default_auto_field = 'django.db.models.BigAutoField'\r\n    name = 'pokedex_app'\r\n    def ready(self):\r\n        import pokedex_app.models\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pokedex_app/apps.py b/pokedex_app/apps.py
+--- a/pokedex_app/apps.py	(revision 7b1e670f32fd0bd3c4f300d076e92114ab163866)
++++ b/pokedex_app/apps.py	(date 1732369522088)
+@@ -5,4 +5,4 @@
+     default_auto_field = 'django.db.models.BigAutoField'
+     name = 'pokedex_app'
+     def ready(self):
+-        import pokedex_app.models
++
+Index: pokedex_app/models.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from xmlrpc.client import MAXINT\r\n\r\nfrom django.db import models\r\n\r\n# Create your models here.\r\nclass pokemon(models.Model):\r\n    id = models.IntegerField()\r\n    name= models.CharField()\r\n    cries = models.CharField()\r\n    height = models.CharField()\r\n    weight = models.IntegerField()\r\n    location = models.CharField()\r\n    image = models.CharField()\r\n\r\nclass abilities(models.Model):\r\n    ability_name = models.CharField()\r\n    ability_url = models.CharField()\r\n    hidden = models.BooleanField()\r\n    slot = models.IntegerField()\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pokedex_app/models.py b/pokedex_app/models.py
+--- a/pokedex_app/models.py	(revision 7b1e670f32fd0bd3c4f300d076e92114ab163866)
++++ b/pokedex_app/models.py	(date 1732371820828)
+@@ -11,6 +11,12 @@
+     weight = models.IntegerField()
+     location = models.CharField()
+     image = models.CharField()
++    evolution = models.CharField()
++    abilities = abilities
++    evolves = evolve_info
++    moves = list[move]
++    species =
++    stats = stats
+ 
+ class abilities(models.Model):
+     ability_name = models.CharField()
+@@ -18,3 +24,7 @@
+     hidden = models.BooleanField()
+     slot = models.IntegerField()
+ 
++class stats(models.Model):
++    base_stat = models.IntegerField()
++    effort = models.IntegerField()
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1136d894-72fd-4a06-95eb-03e6b9c2036e\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pokedex_app/apps.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pokedex_app/apps.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pokedex_app/models.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pokedex_app/models.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pokedex_app/views.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pokedex_app/views.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/templates/home/home.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/home/home.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2pFTiG1noJv0sRwJZ6rBVxUIs8V\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"POKEDEX\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\r\n      <module name=\"POKEDEX\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\r\n      <option name=\"port\" value=\"8000\" />\r\n      <option name=\"host\" value=\"localhost\" />\r\n      <option name=\"additionalOptions\" value=\"\" />\r\n      <option name=\"browserUrl\" value=\"\" />\r\n      <option name=\"runTestServer\" value=\"false\" />\r\n      <option name=\"runNoReload\" value=\"false\" />\r\n      <option name=\"useCustomRunCommand\" value=\"false\" />\r\n      <option name=\"customRunCommand\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153\" />\r\n        <option value=\"bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1136d894-72fd-4a06-95eb-03e6b9c2036e\" name=\"Changes\" comment=\"\" />\r\n      <created>1732360948295</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1732360948295</updated>\r\n      <workItem from=\"1732360949647\" duration=\"2536000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7b1e670f32fd0bd3c4f300d076e92114ab163866)
++++ b/.idea/workspace.xml	(date 1732371343442)
+@@ -8,8 +8,6 @@
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pokedex_app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex_app/apps.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pokedex_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex_app/models.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pokedex_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex_app/views.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />

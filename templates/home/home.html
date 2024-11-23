@@ -2,6 +2,12 @@
 {% load static %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
-    
-sdjhaskjd
+    <h1>Pokémon Capturados</h1>
+    <ul>
+        {% for pokemon in pokemons %}
+            <li>
+                <strong>Pokémon ID:</strong> {{ pokemon.pokemon_id }}  <strong>Pokemon name:</strong> {{ pokemon.pokemon_name }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

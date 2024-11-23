@@ -476,6 +476,7 @@ html {
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid white;
+    filter: brightness(0%);
 }
 
 .carta-nom {
@@ -501,7 +502,7 @@ html {
 .carta::after {
   content: '';
   position: absolute;
-  background: #07182E;
+  background: rgba(14, 21, 64, 0.78);
   inset: 5px;
   border-radius: 15px;
 }

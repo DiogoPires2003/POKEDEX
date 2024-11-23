@@ -7,6 +7,7 @@ BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
 
 # Create your views here.
 def home(request):
+
     # URL del endpoint para el equipo
     team_id = "8c4d959b-64bb-4952-9f23-b0f76d93c733"
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/teams/{team_id}"
@@ -52,6 +53,7 @@ def team_detail(request, endpoint, team_id):
     return JsonResponse(team_data, safe=False)
 
 
+
 def zone_post(request):
     if request.method == "POST":
         zone_id = request.POST.get("zone_id")
@@ -59,27 +61,25 @@ def zone_post(request):
 
         api_url = f"{BASE_URL}/events/{zone_id}"
 
+    if request.method == "POST":
         try:
-            data = {
-                "team_id": "8c4d959b-64bb-4952-9f23-b0f76d93c733",
-            }
+            payload = request.POST.dict()
 
-            headers = {
-                "Content-Type": "application/json",
-                "accept": "application/json"
-            }
+            payload['team_id'] = '8c4d959b-64bb-4952-9f23-b0f76d93c733'
 
-            response = requests.post(api_url, json=data, headers=headers)
+            headers = {"Content-Type": "application/json"}
+
+            response = requests.post(api_url, json=payload, headers=headers)
             response.raise_for_status()
 
             response_data = response.json()
         except requests.exceptions.RequestException as e:
+            # Manejar errores si la conexión falla
             return JsonResponse({"error": f"Error al conectar con la API: {str(e)}"}, status=500)
 
         return JsonResponse(response_data, safe=False)
     else:
         return JsonResponse({"error": "Método no permitido, solo POST es soportado."}, status=405)
-
 
 def pokemon_names(request, id):
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/pokemons/{id}"
@@ -141,3 +141,8 @@ def pokemon_get(request, pokemon_id):
         return JsonResponse({"error": "No se pudo obtener la información de la zona"}, status=500)
 
     return JsonResponse(zone_data)
+
+
+def detail(request,id):
+    return render(request, 'home/info.html')
+

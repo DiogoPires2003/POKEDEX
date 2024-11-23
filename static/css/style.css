@@ -541,13 +541,58 @@ button {
 }
 
 /* Ajuste responsivo para las cartas */
+/*
 .carta {
   width: 190px;
   height: 254px;
-  margin: 8px; /* Espaciado extra alrededor de las tarjetas */
-  flex: 1 1 calc(25% - 32px); /* 4 tarjetas por fila en pantallas grandes */
+  margin: 8px;
+  flex: 1 1 calc(25% - 32px);
   max-width: 190px;
 }
+ */
+
+/* Ejemplo de tipos de Pokémon con bordes de colores específicos */
+.carta {
+  width: 190px;
+  height: 254px;
+  background: #07182E;
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  flex-direction: column;
+  text-align: center;
+  border: 5px solid transparent; /* Establece un borde transparente por defecto */
+}
+
+/* Color de borde según el tipo */
+.carta.fire {
+  border-color: #f54242; /* Rojo para fuego */
+}
+
+.carta.water {
+  border-color: #42a1f5; /* Azul para agua */
+}
+
+.carta.grass {
+  border-color: #6db24b; /* Verde para planta */
+}
+
+.carta.electric {
+  border-color: #f5e642; /* Amarillo para eléctrico */
+}
+
+.carta.ghost {
+  border-color: #6a4c9c; /* Morado para fantasma */
+}
+
+.carta.dragon {
+  border-color: #6f4f37; /* Marrón para dragón */
+}
+
+/* Añade más tipos según sea necesario */
 
 /* Media queries para adaptar a diferentes pantallas */
 @media (max-width: 1024px) {

@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1136d894-72fd-4a06-95eb-03e6b9c2036e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pokedex_app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pokedex_app/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pokedex_app/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pokedex_app/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pokedex_app/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pokedex_app/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/POKEDEX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/POKEDEX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/POKEDEX/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/POKEDEX/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/POKEDEX/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/POKEDEX/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/POKEDEX/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/POKEDEX/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/POKEDEX/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/POKEDEX/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pokedex_app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex_app/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pokedex_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pokedex_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex_app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,28 +19,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2pFTiG1noJv0sRwJZ6rBVxUIs8V" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="POKEDEX" type="Python.DjangoServer" factoryName="Django server">
       <module name="POKEDEX" />

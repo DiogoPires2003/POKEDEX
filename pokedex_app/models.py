@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class pokemon(models.Model):
-    id = models.IntegerField(MAXINT = 153)
+    id = models.IntegerField()
     name= models.CharField()
     cries = models.CharField()
     height = models.CharField()

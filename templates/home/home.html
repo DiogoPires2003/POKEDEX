@@ -2,6 +2,8 @@
 {% load static %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
-    
-
+    {% for pokemon in pokemons %}
+        <div>
+            {{pokemon.id}}
+        </div>
 {% endblock %}

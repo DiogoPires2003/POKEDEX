@@ -1,4 +1,3 @@
-
 body {
     margin: 0; /* Elimina márgenes predeterminados */
     padding: 0; /* Elimina relleno predeterminado */
@@ -7,10 +6,7 @@ body {
     box-sizing: border-box; /* Asegura que el ancho/altura incluyan bordes y rellenos */
 
     /* Add your background pattern here */
-    background-color: #eee;
-    background-image: radial-gradient(rgba(155, 155, 155, 0.18) 2px, transparent 0);
-    background-size: 30px 30px;
-    background-position: -5px -5px
+    background-color: #b71414;
 }
 
 .background-div {
@@ -376,7 +372,7 @@ button {
   top: 50%;
   transform: translate(-50%, -50%);
   margin-top: 30px;
-  color: #bd9f67;
+  color: #8B8000;
   padding-left: 8px;
   font-size: 11px;
   opacity: 0;

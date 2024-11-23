@@ -1,5 +1,4 @@
 
-
 body {
     margin: 0; /* Elimina márgenes predeterminados */
     padding: 0; /* Elimina relleno predeterminado */
@@ -18,7 +17,7 @@ body {
     background-image: url("../img/top.png");
     height: 10%; /* adjust as needed */
     background-size: cover; /* Scale the background image to cover the entire div */
-    background-position: bottom  center; /* Ensure the image stays centered */
+    background-position: bottom center; /* Ensure the image stays centered */
 
 }
 
@@ -40,53 +39,209 @@ html {
 
 /* From Uiverse.io by boryanakrasteva */
 .camera-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    position: relative;
 }
 
 .camera-btn::after {
-  width: fit-content;
-  height: fit-content;
-  position: absolute;
-  font-size: 15px;
-  color: white;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    font-size: 15px;
+    color: white;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.2s linear;
-  top: 115%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s linear;
+    top: 115%;
 }
 
 .camera-icon {
-  width: 30px;
-  height: 30px;
-  transition: 0.2s linear;
+    width: 30px;
+    height: 30px;
+    transition: 0.2s linear;
 }
 
 .camera-icon path {
-  fill: white;
-  transition: 0.2s linear;
+    fill: white;
+    transition: 0.2s linear;
 }
 
 .camera-btn:hover > .camera-icon {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .camera-btn:hover > .camera-icon path {
-  fill: rgb(177, 139, 189);
+    fill: rgb(177, 139, 189);
 }
 
 .camera-btn:hover::after {
-  visibility: visible;
-  opacity: 1;
-  top: 105%;
+    visibility: visible;
+    opacity: 1;
+    top: 105%;
+}
+
+/* cercles */
+.loader {
+    display: flex; /* Alinea los elementos en fila */
+    justify-content: center; /* Centra los círculos horizontalmente */
+    align-items: center; /* Centra los círculos verticalmente */
+    gap: 15px; /* Espacio entre círculos */
+    margin-top: -15px;
+    z-index: -1;
+}
+
+.loader-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.loader-circle::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    height: 80%;
+    width: 80%;
+    background-image: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.5)
+    );
+    border-radius: 50%;
+}
+
+.loader-circle:nth-child(1) {
+    background-color: #EF0107;
+    animation: changeRed 1s linear infinite;
+}
+
+.loader-circle:nth-child(2) {
+    background-color: #FFFF00;
+    animation: changeYellow 1s linear infinite;
+}
+
+.loader-circle:nth-child(3) {
+    background-color: rgb(36, 182, 0);
+    animation: changeGreen 1s linear infinite;
+}
+
+/* Animaciones globales */
+@keyframes changeRed {
+    0%, 100% {
+        background-color: #EF0107;
+    }
+    50% {
+        background-color: #7C0A02;
+    }
+}
+
+@keyframes changeYellow {
+    0%, 100% {
+        background-color: #FFFF00;
+    }
+    50% {
+        background-color: #999900;
+    }
+}
+
+@keyframes changeGreen {
+    0%, 100% {
+        background-color: rgb(36, 182, 0);
+    }
+    50% {
+        background-color: green;
+    }
+}
+
+/* open */
+.box {
+    width: 140px;
+    justify-content: center;
+    height: auto;
+    transition: .5s linear;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+    margin: 0 5px;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.box:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+    box-sizing: border-box;
+    transform: translateX(100%);
+}
+
+.box:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-top: 4px solid transparent;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    transform: translateX(-100%);
+}
+
+.box:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.box:hover:before {
+    border-color: #262626;
+    height: 100%;
+    transform: translateX(0);
+    transition: .3s transform linear, .3s height linear .3s;
+}
+
+.box:hover:after {
+    border-color: #262626;
+    height: 100%;
+    transform: translateX(0);
+    transition: .3s transform linear, .3s height linear .5s;
+}
+
+button {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: transparent;
 }

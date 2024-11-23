@@ -25,22 +25,20 @@
 
     <div class=" g-0 col-2 col-md-3 col-lg-2 py-3 border-none border-red h-100 "
          style=" background-color: red; min-width: 100px">
-
-
-        <button class="camera-btn">
-            <img src="{% static 'img/camera-lens-svgrepo-com.svg' %}" alt="Descripción de la imagen">
-
-        </button>
-
-
     </div>
-    <div class="g-0 red-shape col-2 col-md-2 col-lg-1 py-3 border-red" style="min-width: 50px"></div>
-    <div class="g-0 col border-red h-50" style=" background-color: red; height: 75px"></div>
+    <div class="pt-0 g-0 d-flex red-shape col-2 col-md-2 col-lg-1 py-3 border-red" style="min-width: 50px">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+    </div>
+    <div class="flex-row d-flex g-0 col border-red h-50" style=" background-color: red; height: 75px">
+        
+    </div>
 </div>
 
-<main>
-
-    {% block content %} {% endblock %}
+{% block content %} {% endblock %}
 </main>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

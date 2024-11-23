@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
 
+    <link rel="icon" type="image/x-icon" href="{% static "img/Logo.png" %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
     <title>{% block title %} {% endblock %}</title>
 </head>
 <style>
@@ -23,19 +26,21 @@
 
 <div class="container-grid p-0 row g-0 " style="height: 15%">
 
-    <div class=" g-0 col-2 col-md-3 col-lg-2 py-3 border-none border-red h-100 "
-         style=" background-color: red; min-width: 100px">
+    <div class="g-0 col-2 col-md-3 col-lg-2 py-3 border-none border-red h-100 d-flex justify-content-center align-items-center"
+         style="background-color: red; min-width: 100px">
+        <button class="CameraBtn">
+            <img src="{% static 'img/camera-lens-svgrepo-com.svg' %}" class="h-100">
+        </button>
     </div>
-    <div class="pt-0 g-0 d-flex red-shape col-2 col-md-2 col-lg-1 py-3 border-red" style="min-width: 50px">
-        <div class="loader">
+
+    <div class="g-0 red-shape col-2 col-md-2 col-lg-1 py-3 border-red" style="min-width: 80px">
+        <div class="loader mt-3">
             <div class="loader-circle"></div>
             <div class="loader-circle"></div>
             <div class="loader-circle"></div>
         </div>
     </div>
-    <div class="flex-row d-flex g-0 col border-red h-50" style=" background-color: red; height: 75px">
-        
-    </div>
+    <div class="g-0 col border-red h-50" style=" background-color: red; height: 75px"></div>
 </div>
 
 {% block content %} {% endblock %}

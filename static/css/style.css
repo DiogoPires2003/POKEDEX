@@ -37,57 +37,95 @@ html {
 }
 
 
-/* From Uiverse.io by boryanakrasteva */
-.camera-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    position: relative;
+
+.CameraBtn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #839ef7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
 }
 
-.camera-btn::after {
-    width: fit-content;
-    height: fit-content;
-    position: absolute;
-    font-size: 15px;
-    color: white;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+.CameraSvgIcon {
+  fill: rgb(214, 178, 255);
+}
+
+.CameraIcon2 {
+  width: 18px;
+  height: 5px;
+  border-bottom: 2px solid rgb(182, 143, 255);
+  border-left: 2px solid rgb(182, 143, 255);
+  border-right: 2px solid rgb(182, 143, 255);
+}
+
+.CameraTooltip {
+  position: absolute;
+  right: -105px;
+  opacity: 0;
+  background-color: rgb(12, 12, 12);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: .2s;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+
+.CameraTooltip::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: rgb(12, 12, 12);
+  background-size: 1000%;
+  background-position: center;
+  transform: rotate(45deg);
+  left: -5%;
+  transition-duration: .3s;
+}
+
+.CameraBtn:hover .CameraTooltip {
+  opacity: 1;
+  transition-duration: .3s;
+}
+
+.CameraBtn:hover {
+  background-color: rgb(150, 94, 255);
+  transition-duration: .3s;
+}
+
+.CameraBtn:hover .CameraIcon2 {
+  border-bottom: 2px solid rgb(235, 235, 235);
+  border-left: 2px solid rgb(235, 235, 235);
+  border-right: 2px solid rgb(235, 235, 235);
+}
+
+.CameraBtn:hover .CameraSvgIcon {
+  fill: rgb(255, 255, 255);
+  animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-10px);
     opacity: 0;
-    visibility: hidden;
-    transition: 0.2s linear;
-    top: 115%;
-}
+  }
 
-.camera-icon {
-    width: 30px;
-    height: 30px;
-    transition: 0.2s linear;
-}
-
-.camera-icon path {
-    fill: white;
-    transition: 0.2s linear;
-}
-
-.camera-btn:hover > .camera-icon {
-    transform: scale(1.2);
-}
-
-.camera-btn:hover > .camera-icon path {
-    fill: rgb(177, 139, 189);
-}
-
-.camera-btn:hover::after {
-    visibility: visible;
+  100% {
+    transform: translateY(0px);
     opacity: 1;
-    top: 105%;
+  }
 }
 
 /* cercles */

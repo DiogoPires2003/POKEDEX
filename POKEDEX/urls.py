@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Api import detalle_pokemon
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('llistaPokemon/', detalle_pokemon),
 ]

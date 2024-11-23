@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content %}
+{% for pokemon in pokemons %}
+        <li>
+            <strong>ID:</strong> {{ pokemon.id }} <br>
+            <strong>Nombre:</strong> {{ pokemon.name }} <br>
+            <strong>Tipos:</strong>
+            <ul>
+                {% for type in pokemon.types %}
+                    <li>{{ type }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+{% endblock %}

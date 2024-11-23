@@ -94,3 +94,23 @@ def pokemon_names(request, id):
         "pokemon_name": pokemon_name
     }
     return render(request,'home/pokemonName.html',context)
+
+def list_Pokemons(request):
+
+    api_url = f"{BASE_URL}/pokemons"
+
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()  # Lanza excepción para errores HTTP
+        pokemons_data = response.json()  # Decodifica el JSON
+
+
+    except requests.exceptions.RequestException as e:
+        # Manejar errores
+        print(f"Error al conectar con la API: {e}")
+
+    context = {
+        "pokemons": pokemons_data
+    }
+
+    return render(request, 'Pokedex.html', context)

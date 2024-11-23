@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Inicio {% endblock %}
+{% block title %}Inicio{% endblock %}
 {% block content %}
     <h1>Pokémon Capturados</h1>
     <ul>
-        {% for pokemon in pokemons %}
+        {% for pokemon in captured_pokemons %}
             <li>
-                <strong>Pokémon ID:</strong> {{ pokemon.pokemon_id }}  <strong>Pokemon name:</strong> {{ pokemon.pokemon_name }}
+                <strong>Pokémon ID:</strong> {{ pokemon.pokemon_id }}
+                <strong>Pokemon name:</strong> {{ pokemon.pokemon_name }}
             </li>
         {% endfor %}
     </ul>
+
+    <h2>Enviar Evento a Zona</h2>
+    <form method="POST" action="{% url 'zone_post'%}">
+        {% csrf_token %}
+        <input type="text" name="zone_id" value="{{ zone_id }}">
+        <button type="submit">Enviar Evento</button>
+    </form>
 {% endblock %}

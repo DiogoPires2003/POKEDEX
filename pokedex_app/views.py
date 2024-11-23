@@ -7,6 +7,7 @@ BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
 
 # Create your views here.
 def home(request):
+
     # URL del endpoint para el equipo
     team_id = "8c4d959b-64bb-4952-9f23-b0f76d93c733"
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/teams/{team_id}"
@@ -94,3 +95,7 @@ def pokemon_names(request, id):
         "pokemon_name": pokemon_name
     }
     return render(request,'home/pokemonName.html',context)
+
+
+def detail(request,id):
+    return render(request, 'home/info.html')

@@ -531,3 +531,39 @@ button {
   inset: 5px;
   border-radius: 15px;
 }
+/* Contenedor para organizar las cartas */
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila */
+  gap: 16px; /* Espaciado entre las tarjetas */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  padding: 16px;
+}
+
+/* Ajuste responsivo para las cartas */
+.carta {
+  width: 190px;
+  height: 254px;
+  margin: 8px; /* Espaciado extra alrededor de las tarjetas */
+  flex: 1 1 calc(25% - 32px); /* 4 tarjetas por fila en pantallas grandes */
+  max-width: 190px;
+}
+
+/* Media queries para adaptar a diferentes pantallas */
+@media (max-width: 1024px) {
+  .carta {
+    flex: 1 1 calc(33.33% - 32px); /* 3 tarjetas por fila */
+  }
+}
+
+@media (max-width: 768px) {
+  .carta {
+    flex: 1 1 calc(50% - 32px); /* 2 tarjetas por fila */
+  }
+}
+
+@media (max-width: 480px) {
+  .carta {
+    flex: 1 1 100%; /* 1 tarjeta por fila en pantallas pequeñas */
+  }
+}

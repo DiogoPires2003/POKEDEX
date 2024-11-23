@@ -2,19 +2,21 @@
 {% load static %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
-{% for pokemon in pokemons %}
-<div class="carta">
+    <div class="container">
+    {% for pokemon in pokemons %}
+    <div class="carta">
         <div class="carta-contenidor">
-            <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.image }}"
-                 class="carta-imatge">
+            <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}" class="carta-imatge">
             <h2 class="carta-nom">{{ pokemon.name }}</h2>
-            <p class="carta-id">{{ pokemon.id }}</p>
-            <p class="carta-tipus">
+            <p class="carta-id">ID: {{ pokemon.id }}</p>
+            <ul class="carta-tipus">
                 {% for type in pokemon.types %}
-                    <li>{{ type.type.name }}</li>
+                <li>{{ type.type.name }}</li>
                 {% endfor %}
-            </p>
+            </ul>
         </div>
     </div>
     {% endfor %}
+</div>
+    
 {% endblock %}

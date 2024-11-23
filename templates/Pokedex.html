@@ -3,15 +3,18 @@
 {% block title %} Inicio {% endblock %}
 {% block content %}
 {% for pokemon in pokemons %}
-        <li>
-            <strong>ID:</strong> {{ pokemon.id }} <br>
-            <strong>Nombre:</strong> {{ pokemon.name }} <br>
-            <strong>Tipos:</strong>
-            <ul>
+<div class="carta">
+        <div class="carta-contenidor">
+            <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.image }}"
+                 class="carta-imatge">
+            <h2 class="carta-nom">{{ pokemon.name }}</h2>
+            <p class="carta-id">{{ pokemon.id }}</p>
+            <p class="carta-tipus">
                 {% for type in pokemon.types %}
-                    <li>{{ type }}</li>
+                    <li>{{ type.type.name }}</li>
                 {% endfor %}
-            </ul>
-        </li>
+            </p>
+        </div>
+    </div>
     {% endfor %}
 {% endblock %}

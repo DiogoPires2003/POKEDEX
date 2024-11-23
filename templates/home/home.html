@@ -2,8 +2,12 @@
 {% load static %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
-    {% for pokemon in pokemons %}
-        <div>
-            {{pokemon.id}}
-        </div>
+    <h1>Pokémon Capturados</h1>
+    <ul>
+        {% for pokemon in captured_pokemons %}
+            <li>
+                <strong>Pokémon ID:</strong> {{ pokemon.pokemon_id }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

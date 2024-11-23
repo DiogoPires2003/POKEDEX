@@ -18,7 +18,6 @@ def home(request):
         team_data = response.json()  # Decodifica el JSON
         captured_pokemons = team_data.get("captured_pokemons", [])
 
-
     except requests.exceptions.RequestException as e:
         # Manejar errores
         print(f"Error al conectar con la API: {e}")
@@ -55,7 +54,7 @@ def team_detail(request, endpoint, team_id):
 
 def zone_post(request):
     if request.method == "POST":
-        zone_id=request.POST.get("zone_id")
+        zone_id = request.POST.get("zone_id")
         zone_id_from_form = request.POST.get("zone_id", zone_id)
 
         api_url = f"{BASE_URL}/events/{zone_id}"
@@ -100,3 +99,45 @@ def pokemon_names(request, id):
         "pokemon_name": pokemon_name
     }
     return render(request, 'home/pokemonName.html', context)
+
+
+def zone_get(request, zone_id):
+    api_url = f"{BASE_URL}/zones/{zone_id}"  # URL externa
+
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        zone_data = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+        return JsonResponse({"error": "No se pudo obtener la información de la zona"}, status=500)
+
+    return JsonResponse(zone_data)
+
+
+def tournament_get(request, tournament_id):
+    api_url = f"{BASE_URL}/tournaments/{tournament_id}"  # URL externa
+
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        zone_data = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+        return JsonResponse({"error": "No se pudo obtener la información de la zona"}, status=500)
+
+    return JsonResponse(zone_data)
+
+
+def pokemon_get(request, pokemon_id):
+    api_url = f"{BASE_URL}/pokemons/{pokemon_id}"  # URL externa
+
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        zone_data = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+        return JsonResponse({"error": "No se pudo obtener la información de la zona"}, status=500)
+
+    return JsonResponse(zone_data)

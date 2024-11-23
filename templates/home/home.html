@@ -2,55 +2,39 @@
 {% load static %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
-    <!-- Botó centrat -->
-    <div class="container bg-secondary mx-auto" style="width: 70%;">
-        <div class="container bg-danger ">
-            <button>
-            <span class="box">
-                Open Pokedex!
-            </span>
-            </button>
-        </div>
-    </div>
 
-    <div class="card container mx-auto">
-    <button>
+
+
+<a class="codepen-button"><span>Open Pokedex!</span></a>
     
-        <div class="border"></div>
-        <div class="content">
-            <div class="logo">
-                <div class="logo1">
-                    <svg viewBox="0 0 29.667 31.69" xmlns="http://www.w3.org/2000/svg" id="logo-main">
 
-                    </svg>
-
-                    <div>
-                <span class="logo-bottom-text">
-                <button>
-            <span class="box" onclick=navigateTo>
-                Open Pokedex!
-            </span>
-            </button>
-            </span>
-                    </div>
-
-                </div>
-                <span class="trail"></span>
+    <div class="wrapper position-absolute top-0">
+        <div class="inner" style="--quantity: 6;">
+            <div class="carteshome" style="--index: 0;--color-card: 142, 249, 252;">
+                <div class="img"
+                     style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png');"></div>
             </div>
-
-            <div>
-                <span class="logo-bottom-text">
-                <button>
-            <span class="box">
-                Open Pokedex!
-            </span>
-            </button>
-            </span>
+            <div class="carteshome" style="--index: 1;--color-card: 142, 252, 204;">
+                <div class="img"
+                     style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png');"></div>
             </div>
-
+            <div class="carteshome" style="--index: 2;--color-card: 142, 252, 157;">
+                <div class="img"
+                     style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png');"></div>
+            </div>
+            <div class="carteshome" style="--index: 3;--color-card: 215, 252, 142;">
+                <div class="img"
+                     style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png');"></div>
+            </div>
+            <div class="carteshome" style="--index: 4;--color-card: 252, 252, 142;">
+                <div class="img"
+                     style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png');"></div>
+            </div>
+            <div class="carteshome" style="--index: 5;--color-card: 252, 208, 142;">
+                <div class="img"
+                     style="background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png');"></div>
+            </div>
         </div>
-    </button>
-
     </div>
 
 {% endblock %}

@@ -53,34 +53,28 @@ def team_detail(request, endpoint, team_id):
     return JsonResponse(team_data, safe=False)
 
 
-def zone_post(request):
+def zone_post(request, endpoint, zone_id):
+    api_url = f"{BASE_URL}/{endpoint}/{zone_id}"
+
     if request.method == "POST":
-        zone_id=request.POST.get("zone_id")
-        zone_id_from_form = request.POST.get("zone_id", zone_id)
-
-        api_url = f"{BASE_URL}/events/{zone_id}"
-
         try:
-            data = {
-                "team_id": "8c4d959b-64bb-4952-9f23-b0f76d93c733",
-            }
+            payload = request.POST.dict()
 
-            headers = {
-                "Content-Type": "application/json",
-                "accept": "application/json"
-            }
+            payload['team_id'] = '8c4d959b-64bb-4952-9f23-b0f76d93c733'
 
-            response = requests.post(api_url, json=data, headers=headers)
+            headers = {"Content-Type": "application/json"}
+
+            response = requests.post(api_url, json=payload, headers=headers)
             response.raise_for_status()
 
             response_data = response.json()
         except requests.exceptions.RequestException as e:
+            # Manejar errores si la conexión falla
             return JsonResponse({"error": f"Error al conectar con la API: {str(e)}"}, status=500)
 
         return JsonResponse(response_data, safe=False)
     else:
         return JsonResponse({"error": "Método no permitido, solo POST es soportado."}, status=405)
-
 
 def pokemon_names(request, id):
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/pokemons/{id}"
@@ -99,4 +93,4 @@ def pokemon_names(request, id):
     context = {
         "pokemon_name": pokemon_name
     }
-    return render(request, 'home/pokemonName.html', context)
+    return render(request,'home/pokemonName.html',context)

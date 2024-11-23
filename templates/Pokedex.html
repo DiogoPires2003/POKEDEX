@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content %}
+   <div class="container">
+    {% for pokemon in pokemons %}
+
+    <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
+        <div class="carta-contenidor">
+            <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}" class="carta-imatge">
+            <h2 class="carta-nom">{{ pokemon.name }}</h2>
+            <p class="carta-id">ID: {{ pokemon.id }}</p>
+            <ul class="carta-tipus">
+                {% for type in pokemon.types %}
+                <li>{{ type.type.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

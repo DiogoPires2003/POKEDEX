@@ -16,10 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import JsonResponse
+import requests
 
-from pokedex_app.views import home
+from pokedex_app.views import home, proxy_api, team_detail, zone_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('api/<str:endpoint>/', proxy_api, name='proxy_api'),
+    path('api/<str:endpoint>/<uuid:team_id>/', team_detail, name='team_detail'),
+    path('api/<str:endpoint>/<uuid:zone_id>/', zone_post, name='zone_post'),
 ]

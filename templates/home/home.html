@@ -4,9 +4,9 @@
 {% block content %}
     <h1>Pokémon Capturados</h1>
     <ul>
-        {% for pokemon in captured_pokemons %}
+        {% for pokemon in pokemons %}
             <li>
-                <strong>Pokémon ID:</strong> {{ pokemon.pokemon_id }}
+                <strong>Pokémon ID:</strong> {{ pokemon.pokemon_id }}  <strong>Pokemon name:</strong> {{ pokemon.pokemon_name }}
             </li>
         {% endfor %}
     </ul>

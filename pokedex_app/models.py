@@ -1,3 +1,5 @@
+from xmlrpc.client import MAXINT
+
 from django.db import models
 
 
@@ -17,3 +19,4 @@ class Abilities(models.Model):
     ability_url = models.CharField(max_length=255)
     hidden = models.BooleanField(default=False)
     slot = models.IntegerField()
+

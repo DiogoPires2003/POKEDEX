@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pokedex_app.views import home
+from pokedex_app.views import home, pokemon_names
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('pokemonName/<int:id>', pokemon_names ,name='names'),
 ]

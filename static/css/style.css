@@ -547,34 +547,59 @@ button {
   border-radius: 20px;
   flex-direction: column;
   text-align: center;
-  border: 5px solid transparent; /* Establece un borde transparente por defecto */
+  border: 5px solid transparent; /* Borde transparente por defecto */
+  transition: border 0.3s ease; /* Transición suave al cambiar el borde */
 }
 
-/* Color de borde según el tipo */
+/* Para Pokémon de un solo tipo */
 .carta.fire {
-  border-color: #f54242; /* Rojo para fuego */
+  border: 5px solid #f54242; /* Fuego */
 }
 
 .carta.water {
-  border-color: #42a1f5; /* Azul para agua */
+  border: 5px solid #42a1f5; /* Agua */
 }
 
 .carta.grass {
-  border-color: #6db24b; /* Verde para planta */
+  border: 5px solid #6db24b; /* Planta */
 }
 
 .carta.electric {
-  border-color: #f5e642; /* Amarillo para eléctrico */
+  border: 5px solid #f5e642; /* Eléctrico */
 }
 
 .carta.ghost {
-  border-color: #6a4c9c; /* Morado para fantasma */
+  border: 5px solid #6a4c9c; /* Fantasma */
 }
 
 .carta.dragon {
-  border-color: #6f4f37; /* Marrón para dragón */
+  border: 5px solid #6f4f37; /* Dragón */
 }
 
+/* Para Pokémon de dos tipos */
+.carta.fire.grass {
+  border: 5px solid transparent;
+  border-image: linear-gradient(to right, #f54242 50%, #6db24b 50%); /* Fuego y Planta */
+  border-image-slice: 1;
+}
+
+.carta.water.electric {
+  border: 5px solid transparent;
+  border-image: linear-gradient(to right, #42a1f5 50%, #f5e642 50%); /* Agua y Eléctrico */
+  border-image-slice: 1;
+}
+
+.carta.fire.water {
+  border: 5px solid transparent;
+  border-image: linear-gradient(to right, #f54242 50%, #42a1f5 50%); /* Fuego y Agua */
+  border-image-slice: 1;
+}
+
+.carta.grass.poison {
+  border: 5px solid transparent;
+  border-image: linear-gradient(to right, #6f4f37 50%, #6a4c9c 50%); /* Dragón y Fantasma */
+  border-image-slice: 1;
+}
 /* Añade más tipos según sea necesario */
 
 /* Media queries para adaptar a diferentes pantallas */

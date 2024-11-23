@@ -26,10 +26,7 @@ html {
     box-sizing: border-box; /* Asegura que el ancho/altura incluyan bordes y rellenos */
 
     /* Add your background pattern here */
-    background-color: #eee;
-    background-image: radial-gradient(rgba(155, 155, 155, 0.18) 2px, transparent 0);
-    background-size: 30px 30px;
-    background-position: -5px -5px
+    background-color: #b71414;
 }
 
 

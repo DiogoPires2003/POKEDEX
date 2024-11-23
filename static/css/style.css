@@ -39,7 +39,7 @@ html {
   height: 50px;
   border: none;
   border-radius: 50%;
-  background-color: #839ef7;
+  background-color: dodgerblue;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,8 +97,19 @@ html {
 }
 
 .CameraBtn:hover {
-  background-color: rgb(150, 94, 255);
+  background-color: white;
+    animation: changeWhite 1s linear infinite;
+
   transition-duration: .3s;
+}
+/* Animaciones globales */
+@keyframes changeWhite {
+    0%, 100% {
+        background-color: white;
+    }
+    50% {
+        background-color: dimgrey;
+    }
 }
 
 .CameraBtn:hover .CameraIcon2 {

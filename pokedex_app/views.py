@@ -1,7 +1,7 @@
 from lib2to3.fixes.fix_input import context
 
 import requests
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import render
 import random
 
@@ -213,7 +213,7 @@ def detail(request, poke_id):
     return render(request, 'home/info.html', {'pokemon': pokemon})
 
 def whoIsThatPokemon(request):
-    random_id = random.randint(1,153)
+    random_id = random.randint(1,151)
     api_url = f"{BASE_URL}/pokemons/{random_id}"
 
     respons = requests.get(api_url)

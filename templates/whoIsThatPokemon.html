@@ -3,7 +3,7 @@
 {% block title %} Inicio {% endblock %}
 {% block content %}
 <div class="row w-100 align-items-center">
-    <!-- Columna del botó "Back" -->
+    <!-- Columna del botón "Back" -->
     <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
         <a href="{% url 'pokedex' %}" style="text-decoration: none; color: inherit">
             <button class="go-back-button">
@@ -24,10 +24,18 @@
         <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}"
              id="pokemon-image" class="carta-imatge-who" style="width: 200px; height: 200px;cursor:pointer">
         <h2 class="carta-nom-who" id="pokemon-name" style="font-size: 2em; color: black;">???</h2>
-        <button type="button" class="btn btn-primary" onclick="revealPokemon()"
-                style="margin-top: 20px; font-size: 1.2em; padding: 10px 20px;  border-radius: 15px;">
-            Who Is That Pokemon?
-        </button>
+        <div style="margin-top: 20px;">
+            <button type="button" class="btn btn-primary" onclick="revealPokemon()"
+                    style="font-size: 1.2em; padding: 10px 20px; border-radius: 15px;">
+                Who Is That Pokemon?
+            </button>
+            <a href="{% url 'whoIsThatPokemon' %}" style="text-decoration: none; color: inherit">
+            <button type="button" class="btn btn-secondary" 
+                    style="font-size: 1.2em; padding: 10px 20px; border-radius: 15px; margin-left: 10px;">
+                Reset
+            </button>
+            </a>   
+        </div>
         <audio id="pokemonCry" src="{{ pokemon.cries }}" preload="auto"></audio>
     </div>
 </div>
@@ -35,21 +43,19 @@
 <script>
     const pokemonImage = document.getElementById("pokemon-image");
     const pokemonCry = document.getElementById("pokemonCry");
+
     function playAudio() {
-
-
-            pokemonCry.play().catch(function (error) {
-                console.error('Audio failed to play:', error);
-            });
-        }
-
-        pokemonImage.addEventListener("click", function () {
-            playAudio();
+        pokemonCry.play().catch(function (error) {
+            console.error('Audio failed to play:', error);
         });
+    }
+
+    pokemonImage.addEventListener("click", function () {
+        playAudio();
+    });
 
     function revealPokemon() {
         // Cambiar la clase de la imagen para eliminar el filtro
-        const pokemonImage = document.getElementById('pokemon-image');
         pokemonImage.classList.remove('carta-imatge-who');
         pokemonImage.classList.add('carta-imatge-obtained-who');
 
@@ -58,8 +64,6 @@
         pokemonName.textContent = "{{ pokemon.name }}";
     }
 
-
+   
 </script>
-
-
 {% endblock %}

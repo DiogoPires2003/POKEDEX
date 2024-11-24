@@ -2,7 +2,7 @@ from lib2to3.fixes.fix_input import context
 
 import requests
 from django.http import JsonResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import random
 
 BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
@@ -202,7 +202,15 @@ def pokemon_get(request, pokemon_id):
 def detail(request, poke_id):
 
     url = f"{BASE_URL}/pokemons/{poke_id}/"
-    
+    api_pokemons_obtained = f"{BASE_URL}/teams/{team_id}"
+
+    pokemons_response = requests.get(api_pokemons_obtained)
+    pokemons_response.raise_for_status()
+    pokemons_obtained = pokemons_response.json()
+    pokemonsId = [pokemon['pokemon_id'] for pokemon in pokemons_obtained.get("captured_pokemons", [])]
+    if(poke_id not in pokemonsId):
+        return redirect('pokedex')
+
     try:
         response = requests.get(url)
         response.raise_for_status()

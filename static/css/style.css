@@ -249,8 +249,7 @@ html {
     height: 100%;
     background: linear-gradient(115deg, #d1d1d1, darkgray, grey);
     background-size: 25% 100%;
-    animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop
-        0.75s linear infinite;
+    animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop 0.75s linear infinite;
     animation-play-state: running;
     translate: -5% 0%;
     transition: translate 0.25s ease-out;
@@ -409,87 +408,136 @@ html {
         opacity: 1;
     }
 
-  95% {
-    background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
-    opacity: 0;
-  }
+    95% {
+        background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
+        opacity: 0;
+    }
 
 }
 
 /* cartes */
 .carta {
-  width: 190px;
-  height: 254px;
-  background: #07182E;
-  position: relative;
-  display: flex;
-  place-content: center;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 20px;
-  flex-direction: column; /* Organitza el contingut en columna */
-  text-align: center;
+    width: 190px;
+    height: 254px;
+    background: #07182E;
+    position: relative;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    flex-direction: column; /* Organitza el contingut en columna */
+    text-align: center;
 }
 
 .carta-contenidor {
-  z-index: 1; /* Evita que el gradient cobreixi el contingut */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+    z-index: 1; /* Evita que el gradient cobreixi el contingut */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 .carta-imatge {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid white;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
     filter: brightness(0%);
 }
-.carta-imatge-obtained {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid white;
 
+.carta-imatge-obtained {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+
+}.container-who {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;                 /* Ocupar todo el ancho */
+    height: 100vh;               /* Ocupar la altura completa de la ventana */
+    padding: 20px;
+    box-sizing: border-box;      /* Incluir padding en el cálculo del tamaño */
 }
 
+.carta-contenidor-who {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;                  /* Usar un ancho relativo */
+    max-width: 400px;            /* Limitar el tamaño máximo */
+    height: auto;                /* Ajustar altura automáticamente */
+    aspect-ratio: 1;             /* Mantener proporciones cuadradas */
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.carta-imatge-who {
+    width: 80%;                  /* Imagen ocupa el 80% del ancho del contenedor */
+    max-width: 200px;            /* Máximo tamaño de la imagen */
+    height: auto;                /* Mantener proporciones */
+    object-fit: cover;           /* Asegura que la imagen no se deforme */
+    border: 3px solid transparent; /* Borde transparente inicial */
+    filter: brightness(0%);
+}
+
+.carta-imatge-obtained-who {
+    width: 80%;                  /* Misma anchura que la imagen oculta */
+    max-width: 200px;
+    height: auto;
+    object-fit: cover;
+    border: 3px solid transparent; /* Borde transparente */
+    filter: none;                /* Imagen normal */
+}
+
+.carta-nom-who {
+    font-size: 1.5em;            /* Tamaño relativo del texto */
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
 .carta-nom {
-  color: white;
-  font-size: 1.2em;
-  margin: 0;
+    color: white;
+    font-size: 1.2em;
+    margin: 0;
 }
 
 .carta-id {
-  color: #B0C4DE;
-  font-size: 1em;
-  margin: 0;
+    color: #B0C4DE;
+    font-size: 1em;
+    margin: 0;
 }
 
 .carta-tipus {
-  color: #90EE90;
-  font-size: 0.9em;
-  margin: 0;
+    color: #90EE90;
+    font-size: 0.9em;
+    margin: 0;
 }
-
 
 
 .carta::after {
-  content: '';
-  position: absolute;
-  background: rgba(14, 21, 64, 0.78);
-  inset: 5px;
-  border-radius: 15px;
+    content: '';
+    position: absolute;
+    background: rgba(14, 21, 64, 0.78);
+    inset: 5px;
+    border-radius: 15px;
 }
+
 /* Contenedor para organizar las cartas */
 .container {
-  display: flex;
-  flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila */
-  gap: 16px; /* Espaciado entre las tarjetas */
-  justify-content: center; /* Centra las tarjetas horizontalmente */
-  padding: 16px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila */
+    gap: 16px; /* Espaciado entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    padding: 16px;
 }
 
 /* Ajuste responsivo para las cartas */
@@ -505,276 +553,276 @@ html {
 
 /* Ejemplo de tipos de Pokémon con bordes de colores específicos */
 .carta {
-  width: 190px;
-  height: 254px;
-  background: #07182E;
-  position: relative;
-  display: flex;
-  place-content: center;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 20px;
-  flex-direction: column;
-  text-align: center;
-  padding: 5px ; /* Borde transparente por defecto */
-  transition: border 0.3s ease; /* Transición suave al cambiar el borde */
+    width: 190px;
+    height: 254px;
+    background: #07182E;
+    position: relative;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px; /* Borde transparente por defecto */
+    transition: border 0.3s ease; /* Transición suave al cambiar el borde */
 }
 
 /* Para Pokémon de un solo tipo */
 /* Colores de borde según el tipo */
 .carta.normal {
-  background: #A8A77A; /* Beige claro para Normal */
+    background: #A8A77A; /* Beige claro para Normal */
 }
 
 .carta.fire {
-  background: #EE8130; /* Naranja para Fuego */
+    background: #EE8130; /* Naranja para Fuego */
 }
 
 .carta.water {
-  background: #6390F0; /* Azul claro para Agua */
+    background: #6390F0; /* Azul claro para Agua */
 }
 
 .carta.electric {
-  background: #F7D02C; /* Amarillo para Eléctrico */
+    background: #F7D02C; /* Amarillo para Eléctrico */
 }
 
 .carta.grass {
-  background: #7AC74C; /* Verde claro para Planta */
+    background: #7AC74C; /* Verde claro para Planta */
 }
 
 .carta.ice {
-  background: #96D9D6; /* Azul turquesa para Hielo */
+    background: #96D9D6; /* Azul turquesa para Hielo */
 }
 
 .carta.fighting {
-  background: #C22E28; /* Rojo oscuro para Lucha */
+    background: #C22E28; /* Rojo oscuro para Lucha */
 }
 
 .carta.poison {
-  background: #A33EA1; /* Púrpura para Veneno */
+    background: #A33EA1; /* Púrpura para Veneno */
 }
 
 .carta.ground {
-  background: #E2BF65; /* Marrón claro para Tierra */
+    background: #E2BF65; /* Marrón claro para Tierra */
 }
 
 .carta.flying {
-  background: #A98FF3; /* Lila para Volador */
+    background: #A98FF3; /* Lila para Volador */
 }
 
 .carta.psychic {
-  background: #F95587; /* Rosa fuerte para Psíquico */
+    background: #F95587; /* Rosa fuerte para Psíquico */
 }
 
 .carta.bug {
-  background: #A6B91A; /* Verde musgo para Bicho */
+    background: #A6B91A; /* Verde musgo para Bicho */
 }
 
 .carta.rock {
-  background: #B6A136; /* Marrón arenoso para Roca */
+    background: #B6A136; /* Marrón arenoso para Roca */
 }
 
 .carta.ghost {
-  background: #735797; /* Morado oscuro para Fantasma */
+    background: #735797; /* Morado oscuro para Fantasma */
 }
 
 .carta.dragon {
-  background: #6F35FC; /* Violeta brillante para Dragón */
+    background: #6F35FC; /* Violeta brillante para Dragón */
 }
 
 .carta.dark {
-  background: #705746; /* Marrón oscuro para Siniestro */
+    background: #705746; /* Marrón oscuro para Siniestro */
 }
 
 .carta.steel {
-  background: #B7B7CE; /* Gris metalizado para Acero */
+    background: #B7B7CE; /* Gris metalizado para Acero */
 }
 
 .carta.fairy {
-  background: #D685AD; /* Rosa pastel para Hada */
+    background: #D685AD; /* Rosa pastel para Hada */
 }
 
 /* Para Pokémon de dos tipos */
 /* CSS para combinaciones de dos tipos Pokémon */
 
 .carta.normal.fire {
-  background: linear-gradient(135deg, #A8A77A, #EE8130); /* Normal + Fire */
+    background: linear-gradient(135deg, #A8A77A, #EE8130); /* Normal + Fire */
 }
 
 .carta.normal.water {
-  background: linear-gradient(135deg, #A8A77A, #6390F0); /* Normal + Water */
+    background: linear-gradient(135deg, #A8A77A, #6390F0); /* Normal + Water */
 }
 
 .carta.normal.electric {
-  background: linear-gradient(135deg, #A8A77A, #F7D02C); /* Normal + Electric */
+    background: linear-gradient(135deg, #A8A77A, #F7D02C); /* Normal + Electric */
 }
 
 .carta.normal.grass {
-  background: linear-gradient(135deg, #A8A77A, #7AC74C); /* Normal + Grass */
+    background: linear-gradient(135deg, #A8A77A, #7AC74C); /* Normal + Grass */
 }
 
 .carta.normal.ice {
-  background: linear-gradient(135deg, #A8A77A, #96D9D6); /* Normal + Ice */
+    background: linear-gradient(135deg, #A8A77A, #96D9D6); /* Normal + Ice */
 }
 
 .carta.normal.fighting {
-  background: linear-gradient(135deg, #A8A77A, #C22E28); /* Normal + Fighting */
+    background: linear-gradient(135deg, #A8A77A, #C22E28); /* Normal + Fighting */
 }
 
 .carta.normal.poison {
-  background: linear-gradient(135deg, #A8A77A, #A33EA1); /* Normal + Poison */
+    background: linear-gradient(135deg, #A8A77A, #A33EA1); /* Normal + Poison */
 }
 
 .carta.normal.ground {
-  background: linear-gradient(135deg, #A8A77A, #E2BF65); /* Normal + Ground */
+    background: linear-gradient(135deg, #A8A77A, #E2BF65); /* Normal + Ground */
 }
 
 .carta.normal.flying {
-  background: linear-gradient(135deg, #A8A77A, #A98FF3); /* Normal + Flying */
+    background: linear-gradient(135deg, #A8A77A, #A98FF3); /* Normal + Flying */
 }
 
 .carta.normal.psychic {
-  background: linear-gradient(135deg, #A8A77A, #F95587); /* Normal + Psychic */
+    background: linear-gradient(135deg, #A8A77A, #F95587); /* Normal + Psychic */
 }
 
 .carta.normal.bug {
-  background: linear-gradient(135deg, #A8A77A, #A6B91A); /* Normal + Bug */
+    background: linear-gradient(135deg, #A8A77A, #A6B91A); /* Normal + Bug */
 }
 
 .carta.normal.rock {
-  background: linear-gradient(135deg, #A8A77A, #B6A136); /* Normal + Rock */
+    background: linear-gradient(135deg, #A8A77A, #B6A136); /* Normal + Rock */
 }
 
 .carta.normal.ghost {
-  background: linear-gradient(135deg, #A8A77A, #735797); /* Normal + Ghost */
+    background: linear-gradient(135deg, #A8A77A, #735797); /* Normal + Ghost */
 }
 
 .carta.normal.dragon {
-  background: linear-gradient(135deg, #A8A77A, #6F35FC); /* Normal + Dragon */
+    background: linear-gradient(135deg, #A8A77A, #6F35FC); /* Normal + Dragon */
 }
 
 .carta.normal.dark {
-  background: linear-gradient(135deg, #A8A77A, #705746); /* Normal + Dark */
+    background: linear-gradient(135deg, #A8A77A, #705746); /* Normal + Dark */
 }
 
 .carta.normal.steel {
-  background: linear-gradient(135deg, #A8A77A, #B7B7CE); /* Normal + Steel */
+    background: linear-gradient(135deg, #A8A77A, #B7B7CE); /* Normal + Steel */
 }
 
 .carta.normal.fairy {
-  background: linear-gradient(135deg, #A8A77A, #D685AD); /* Normal + Fairy */
+    background: linear-gradient(135deg, #A8A77A, #D685AD); /* Normal + Fairy */
 }
 
 .carta.fire.normal {
-  background: linear-gradient(135deg, #EE8130, #A8A77A); /* Fire + Normal */
+    background: linear-gradient(135deg, #EE8130, #A8A77A); /* Fire + Normal */
 }
 
 .carta.fire.water {
-  background: linear-gradient(135deg, #EE8130, #6390F0); /* Fire + Water */
+    background: linear-gradient(135deg, #EE8130, #6390F0); /* Fire + Water */
 }
 
 .carta.fire.electric {
-  background: linear-gradient(135deg, #EE8130, #F7D02C); /* Fire + Electric */
+    background: linear-gradient(135deg, #EE8130, #F7D02C); /* Fire + Electric */
 }
 
 .carta.fire.grass {
-  background: linear-gradient(135deg, #EE8130, #7AC74C); /* Fire + Grass */
+    background: linear-gradient(135deg, #EE8130, #7AC74C); /* Fire + Grass */
 }
 
 .carta.fire.ice {
-  background: linear-gradient(135deg, #EE8130, #96D9D6); /* Fire + Ice */
+    background: linear-gradient(135deg, #EE8130, #96D9D6); /* Fire + Ice */
 }
 
 .carta.fire.fighting {
-  background: linear-gradient(135deg, #EE8130, #C22E28); /* Fire + Fighting */
+    background: linear-gradient(135deg, #EE8130, #C22E28); /* Fire + Fighting */
 }
 
 .carta.fire.poison {
-  background: linear-gradient(135deg, #EE8130, #A33EA1); /* Fire + Poison */
+    background: linear-gradient(135deg, #EE8130, #A33EA1); /* Fire + Poison */
 }
 
 .carta.fire.ground {
-  background: linear-gradient(135deg, #EE8130, #E2BF65); /* Fire + Ground */
+    background: linear-gradient(135deg, #EE8130, #E2BF65); /* Fire + Ground */
 }
 
 .carta.fire.flying {
-  background: linear-gradient(135deg, #EE8130, #A98FF3); /* Fire + Flying */
+    background: linear-gradient(135deg, #EE8130, #A98FF3); /* Fire + Flying */
 }
 
 .carta.fire.psychic {
-  background: linear-gradient(135deg, #EE8130, #F95587); /* Fire + Psychic */
+    background: linear-gradient(135deg, #EE8130, #F95587); /* Fire + Psychic */
 }
 
 .carta.fire.bug {
-  background: linear-gradient(135deg, #EE8130, #A6B91A); /* Fire + Bug */
+    background: linear-gradient(135deg, #EE8130, #A6B91A); /* Fire + Bug */
 }
 
 .carta.fire.rock {
-  background: linear-gradient(135deg, #EE8130, #B6A136); /* Fire + Rock */
+    background: linear-gradient(135deg, #EE8130, #B6A136); /* Fire + Rock */
 }
 
 .carta.fire.ghost {
-  background: linear-gradient(135deg, #EE8130, #735797); /* Fire + Ghost */
+    background: linear-gradient(135deg, #EE8130, #735797); /* Fire + Ghost */
 }
 
 .carta.fire.dragon {
-  background: linear-gradient(135deg, #EE8130, #6F35FC); /* Fire + Dragon */
+    background: linear-gradient(135deg, #EE8130, #6F35FC); /* Fire + Dragon */
 }
 
 .carta.fire.dark {
-  background: linear-gradient(135deg, #EE8130, #705746); /* Fire + Dark */
+    background: linear-gradient(135deg, #EE8130, #705746); /* Fire + Dark */
 }
 
 .carta.fire.steel {
-  background: linear-gradient(135deg, #EE8130, #B7B7CE); /* Fire + Steel */
+    background: linear-gradient(135deg, #EE8130, #B7B7CE); /* Fire + Steel */
 }
 
 .carta.fire.fairy {
-  background: linear-gradient(135deg, #EE8130, #D685AD); /* Fire + Fairy */
+    background: linear-gradient(135deg, #EE8130, #D685AD); /* Fire + Fairy */
 }
 
 .carta.water.normal {
-  background: linear-gradient(135deg, #6390F0, #A8A77A); /* Water + Normal */
+    background: linear-gradient(135deg, #6390F0, #A8A77A); /* Water + Normal */
 }
 
 .carta.water.fire {
-  background: linear-gradient(135deg, #6390F0, #EE8130); /* Water + Fire */
+    background: linear-gradient(135deg, #6390F0, #EE8130); /* Water + Fire */
 }
 
 .carta.water.electric {
-  background: linear-gradient(135deg, #6390F0, #F7D02C); /* Water + Electric */
+    background: linear-gradient(135deg, #6390F0, #F7D02C); /* Water + Electric */
 }
 
 .carta.water.grass {
-  background: linear-gradient(135deg, #6390F0, #7AC74C); /* Water + Grass */
+    background: linear-gradient(135deg, #6390F0, #7AC74C); /* Water + Grass */
 }
 
 .carta.water.ice {
-  background: linear-gradient(135deg, #6390F0, #96D9D6); /* Water + Ice */
+    background: linear-gradient(135deg, #6390F0, #96D9D6); /* Water + Ice */
 }
 
 .carta.water.fighting {
-  background: linear-gradient(135deg, #6390F0, #C22E28); /* Water + Fighting */
+    background: linear-gradient(135deg, #6390F0, #C22E28); /* Water + Fighting */
 }
 
 .carta.water.poison {
-  background: linear-gradient(135deg, #6390F0, #A33EA1); /* Water + Poison */
+    background: linear-gradient(135deg, #6390F0, #A33EA1); /* Water + Poison */
 }
 
 .carta.water.ground {
-  background: linear-gradient(135deg, #6390F0, #E2BF65); /* Water + Ground */
+    background: linear-gradient(135deg, #6390F0, #E2BF65); /* Water + Ground */
 }
 
 .carta.water.flying {
-  background: linear-gradient(135deg, #6390F0, #A98FF3); /* Water + Flying */
+    background: linear-gradient(135deg, #6390F0, #A98FF3); /* Water + Flying */
 }
 
 .carta.water.psychic {
-  background: linear-gradient(135deg, #6390F0, #F95587); /* Water + Psychic */
+    background: linear-gradient(135deg, #6390F0, #F95587); /* Water + Psychic */
 }
 
 .carta.water.bug {
-  background: linear-gradient(135deg, #6390F0, #A6B91A); /* Water + Bug */
+    background: linear-gradient(135deg, #6390F0, #A6B91A); /* Water + Bug */
 }
 
 .carta.water.rock {
@@ -1002,19 +1050,19 @@ html {
 }
 
 .carta.ice.fairy {
-  background: linear-gradient(135deg, #96D9D6, #D685AD); /* Ice + Fairy */
+    background: linear-gradient(135deg, #96D9D6, #D685AD); /* Ice + Fairy */
 }
 
 .carta.fighting.normal {
-  background: linear-gradient(135deg, #C22E28, #A8A77A); /* Fighting + Normal */
+    background: linear-gradient(135deg, #C22E28, #A8A77A); /* Fighting + Normal */
 }
 
 .carta.fighting.fire {
-  background: linear-gradient(135deg, #C22E28, #EE8130); /* Fighting + Fire */
+    background: linear-gradient(135deg, #C22E28, #EE8130); /* Fighting + Fire */
 }
 
 .carta.fighting.water {
-  background: linear-gradient(135deg, #C22E28, #6390F0); /* Fighting + Water */
+    background: linear-gradient(135deg, #C22E28, #6390F0); /* Fighting + Water */
 }
 
 .carta.fighting.electric {
@@ -1839,12 +1887,6 @@ html {
   .carta {
     flex: 1 1 100%; /* 1 tarjeta por fila en pantallas pequeñas */
   }
-=======
-    95% {
-        background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
-        opacity: 0;
-    }
-
 }
 
 /* cartes */
@@ -3471,68 +3513,115 @@ html {
     height: 100%;
     text-align: center;
 }
-/* From Uiverse.io by vinodjangid07 */
-.InputContainer {
-  height: 40px;
+
+/* Botó Go Back */
+.go-back-button {
   display: flex;
+  height: 40px; /* Alçada del botó */
+  width: 100px; /* Amplada del botó */
   align-items: center;
   justify-content: center;
-  background-color: rgb(255, 255, 255);
+  background-color: #28a745; /* Verd */
   border-radius: 10px;
-  overflow: hidden;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
   cursor: pointer;
-  padding-left: 15px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+  border: none;
+  margin-top: 20px;
+  margin-left: 80%;
+}
+
+.go-back-button:hover {
+  background-color: #218838; /* Verd més fosc en passar el cursor */
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+}
+
+.go-back-button > svg {
+  margin-right: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+}
+
+.go-back-button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+}
+
+/* Contenidor per la barra de cerca i el botó "Go Back" */
+.search-container {
+    display: flex;
+    justify-content: space-between; /* Col·loca els elements als extrems esquerre i dret */
+    align-items: center; /* Centra verticalment els elements */
+    width: 100%; /* Ocupa tot l'ample de la pantalla */
+    padding: 10px 20px; /* Afegim una mica de marge per a la part superior i esquerra */
+}
+
+/* barra search */
+.InputContainer {
+    width: 300px; /* Amplada fixa més curta */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+    margin-left: auto; /* Centrat horitzontal a l'espai restant */
+    margin-right: auto; /* Centrat horitzontal a l'espai restant */
 }
 
 .input {
-  width: 170px;
-  height: 100%;
-  border: none;
-  outline: none;
-  font-size: 0.9em;
-  caret-color: rgb(255, 81, 0);
+    flex: 1; /* Fes que l'input ocupi l'espai restant dins del contenidor */
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+    caret-color: rgb(255, 81, 0);
 }
 
 .labelforsearch {
-  cursor: text;
-  padding: 0px 12px;
+    cursor: text;
+    padding: 0px 12px;
 }
 
 .searchIcon {
-  width: 13px;
+    width: 13px;
 }
 
 .border {
-  height: 40%;
-  width: 1.3px;
-  background-color: rgb(223, 223, 223);
+    height: 40%;
+    width: 1.3px;
+    background-color: rgb(223, 223, 223);
 }
 
 .micIcon {
-  width: 12px;
+    width: 12px;
 }
 
 .micButton {
-  padding: 0px 15px 0px 12px;
-  border: none;
-  background-color: transparent;
-  height: 40px;
-  cursor: pointer;
-  transition-duration: .3s;
+    padding: 0px 15px 0px 12px;
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+    transition-duration: .3s;
 }
 
 .searchIcon path {
-  fill: rgb(114, 114, 114);
+    fill: rgb(114, 114, 114);
 }
 
 .micIcon path {
-  fill: rgb(255, 81, 0);
+    fill: rgb(255, 81, 0);
 }
 
 .micButton:hover {
-  background-color: rgb(255, 230, 230);
-  transition-duration: .3s;
+    background-color: rgb(255, 230, 230);
+    transition-duration: .3s;
 }
 
 
@@ -3580,4 +3669,64 @@ html {
   50% {
     transform: rotate(-0.2deg)
   }
+/* Botó Go Back */
+.go-back-button {
+    display: flex;
+    height: 40px; /* Alçada del botó */
+    width: 100px; /* Amplada del botó */
+    align-items: center;
+    justify-content: center;
+    background-color: #28a745; /* Verd */
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    margin-top: 5px;
+}
+
+.go-back-button:hover {
+    background-color: #218838; /* Verd més fosc en passar el cursor */
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+
+.go-back-button > svg {
+    margin-right: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+}
+
+.go-back-button:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+}
+
+/* Botó Play Game */
+.play-game-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 140px; /* Amplada del botó */
+    background-color: #ffc107; /* Groc */
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    padding: 5px; /* Espai intern */
+    overflow: hidden;
+}
+
+.play-game-button:hover {
+    background-color: #e0a800; /* Groc més fosc en passar el cursor */
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+
+.play-game-button .pokemon-icon {
+    width: 30px; /* Amplada de la imatge */
+    height: auto; /* Manté proporcions */
+    max-height: 30px;
+    margin-right: 8px; /* Espai entre la imatge i el text */
 }

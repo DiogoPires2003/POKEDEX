@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import JsonResponse
+import requests
 
-from pokedex_app.views import home, proxy_api, team_detail, zone_post, pokemon_names, zone_get, tournament_get, pokemon_get, list_Pokemons, detail, qr, try_capture
+from pokedex_app.views import home, proxy_api, team_detail, zone_post, pokemon_names, zone_get, tournament_get, pokemon_get, list_Pokemons, detail, qr, try_capture, whoIsThatPokemon
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,4 +37,5 @@ urlpatterns = [
     path('pokedex/', list_Pokemons, name='pokedex'),
     path('try_capture/<str:key>', try_capture, name='try_capture'),
     path('qr/', qr, name='qr'),
+    path('whoIsThatPokemon/', whoIsThatPokemon, name='whoIsThatPokemon'),
 ]

@@ -30,11 +30,11 @@
                 Who Is That Pokemon?
             </button>
             <a href="{% url 'whoIsThatPokemon' %}" style="text-decoration: none; color: inherit">
-            <button type="button" class="btn btn-secondary" 
+            <button type="button" class="btn btn-secondary"
                     style="font-size: 1.2em; padding: 10px 20px; border-radius: 15px; margin-left: 10px;">
                 Reset
             </button>
-            </a>   
+            </a>
         </div>
         <audio id="pokemonCry" src="{{ pokemon.cries }}" preload="auto"></audio>
     </div>
@@ -64,6 +64,6 @@
         pokemonName.textContent = "{{ pokemon.name }}";
     }
 
-   
+
 </script>
 {% endblock %}

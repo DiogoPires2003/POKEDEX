@@ -1,5 +1,5 @@
 import requests
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import render
 import random
 

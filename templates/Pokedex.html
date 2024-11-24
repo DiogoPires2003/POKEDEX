@@ -4,20 +4,86 @@
 {% block content %}
    <div class="container">
     {% for pokemon in pokemons %}
-
-    <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
-        <div class="carta-contenidor">
-            <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}" class="carta-imatge">
-            <h2 class="carta-nom">{{ pokemon.name }}</h2>
-            <p class="carta-id">ID: {{ pokemon.id }}</p>
-            <ul class="carta-tipus">
-                {% for type in pokemon.types %}
-                <li>{{ type.type.name }}</li>
-                {% endfor %}
-            </ul>
+        {% if pokemon.id in captured_pokemons %}
+            {% if pokemon.id == 152 %}
+                <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
+            <div class="carta-contenidor">
+                <img src= {% static "img/hackduck.png" %} alt = "Imagen de {{ pokemon.name }}" class="carta-imatge-obtained">
+                <h2 class="carta-nom">{{ pokemon.name }}</h2>
+                <p class="carta-id">ID: {{ pokemon.id }}</p>
+                <ul class="carta-tipus">
+                    {% for type in pokemon.types %}
+                    <li>{{ type.type.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
+            {% elif pokemon.id == 153 %}
+                <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
+            <div class="carta-contenidor">
+                <img src= {% static "img/cyberduck.png" %} alt = "Imagen de {{ pokemon.name }}" class="carta-imatge-obtained">
+                <h2 class="carta-nom">{{ pokemon.name }}</h2>
+                <p class="carta-id">ID: {{ pokemon.id }}</p>
+                <ul class="carta-tipus">
+                    {% for type in pokemon.types %}
+                    <li>{{ type.type.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+            {% else %}
+                <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
+            <div class="carta-contenidor">
+                <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}" class="carta-imatge-obtained">
+                <h2 class="carta-nom">{{ pokemon.name }}</h2>
+                <p class="carta-id">ID: {{ pokemon.id }}</p>
+                <ul class="carta-tipus">
+                    {% for type in pokemon.types %}
+                    <li>{{ type.type.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+            {% endif %}
+        {% else %}
+             {% if pokemon.id == 152 %}
+                <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
+                    <div class="carta-contenidor">
+                        <img src= {% static "img/hackduck.png" %} alt = "Imagen de {{ pokemon.name }}" class="carta-imatge">
+                        <h2 class="carta-nom">????</h2>
+                        <p class="carta-id">ID: {{ pokemon.id }}</p>
+                        <p class="carta-tipus">
+                            ????
+                        </p>
+                    </div>
+                </div>
+            {% elif pokemon.id == 153 %}
+                <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
+                    <div class="carta-contenidor">
+                        <img src= {% static "img/cyberduck.png" %} alt="Imagen de {{ pokemon.name }}" class="carta-imatge">
+                            <h2 class="carta-nom">????</h2>
+                            <p class="carta-id">ID: {{ pokemon.id }}</p>
+                            <p class="carta-tipus">
+                                ????
+                            </p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="carta {{  pokemon.types.0.type.name }} {{  pokemon.types.1.type.name }}">
+                    <div class="carta-contenidor">
+                        <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}" class="carta-imatge">
+                        <h2 class="carta-nom">????</h2>
+                        <p class="carta-id">ID: {{ pokemon.id }}</p>
+                        <p class="carta-tipus">
+                            ????
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
     {% endfor %}
 </div>
-
+  
 {% endblock %}
+
+

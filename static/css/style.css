@@ -478,6 +478,15 @@ html {
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid white;
+    filter: brightness(0%);
+}
+.carta-imatge-obtained {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+
 }
 
 .carta-nom {
@@ -503,7 +512,7 @@ html {
 .carta::after {
   content: '';
   position: absolute;
-  background: #07182E;
+  background: rgba(14, 21, 64, 0.78);
   inset: 5px;
   border-radius: 15px;
 }

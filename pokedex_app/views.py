@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 import requests
 from django.http import JsonResponse, Http404
 from django.shortcuts import render
@@ -30,6 +32,31 @@ def home(request):
         "captured_pokemons": captured_pokemons
     }
     return render(request, 'home/home.html', context)
+
+
+def qr(request):
+    return render(request, 'home/qr.html')
+
+
+def try_capture(request, key):
+    PAYLOAD = {
+        "team_id": "8c4d959b-64bb-4952-9f23-b0f76d93c733"
+    }
+    url = "https://hackeps-poke-backend.azurewebsites.net/events/{}"
+    url = url.format(key)
+    try:
+        response = requests.post(url, json=PAYLOAD)
+        if response.json()["detail"] == 'You cannot generate a new event at this point of time':
+            return render(request, 'home/get_pokemon.html', {
+                "status_code": 400})
+        return render(request, 'home/get_pokemon.html', {
+            "status_code": response.status_code
+        })
+    except Exception as e:
+        print(f"Error with item {key}: {e}")
+    return render(request, 'home/get_pokemon.html', {
+        "status_code": 400
+    })
 
 
 def proxy_api(request, endpoint):

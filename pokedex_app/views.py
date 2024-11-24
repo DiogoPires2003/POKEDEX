@@ -1,13 +1,17 @@
+from lib2to3.fixes.fix_input import context
+
 import requests
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse
 from django.shortcuts import render
+import random
 
 BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
 
 team_id = "8c4d959b-64bb-4952-9f23-b0f76d93c733"
+
+
 # Create your views here.
 def home(request):
-
     # URL del endpoint para el equipo
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/teams/{team_id}"
 
@@ -30,6 +34,31 @@ def home(request):
     return render(request, 'home/home.html', context)
 
 
+def qr(request):
+    return render(request, 'home/qr.html')
+
+
+def try_capture(request, key):
+    PAYLOAD = {
+        "team_id": "8c4d959b-64bb-4952-9f23-b0f76d93c733"
+    }
+    url = "https://hackeps-poke-backend.azurewebsites.net/events/{}"
+    url = url.format(key)
+    try:
+        response = requests.post(url, json=PAYLOAD)
+        if response.json()["detail"] == 'You cannot generate a new event at this point of time':
+            return render(request, 'home/get_pokemon.html', {
+                "status_code": 400})
+        return render(request, 'home/get_pokemon.html', {
+            "status_code": response.status_code
+        })
+    except Exception as e:
+        print(f"Error with item {key}: {e}")
+    return render(request, 'home/get_pokemon.html', {
+        "status_code": 400
+    })
+
+
 def proxy_api(request, endpoint):
     url = f"{BASE_URL}/{endpoint}"
     response = requests.get(url)
@@ -50,7 +79,6 @@ def team_detail(request, endpoint, team_id):
 
     # Devuelve los datos del equipo como JSON
     return JsonResponse(team_data, safe=False)
-
 
 
 def zone_post(request):
@@ -80,6 +108,7 @@ def zone_post(request):
     else:
         return JsonResponse({"error": "Método no permitido, solo POST es soportado."}, status=405)
 
+
 def pokemon_names(request, id):
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/pokemons/{id}"
 
@@ -97,10 +126,10 @@ def pokemon_names(request, id):
     context = {
         "pokemon_name": pokemon_name
     }
-    return render(request,'home/pokemonName.html',context)
+    return render(request, 'home/pokemonName.html', context)
+
 
 def list_Pokemons(request):
-
     api_url = f"{BASE_URL}/pokemons"
 
     api_pokemons_obtained = f"{BASE_URL}/teams/{team_id}"
@@ -169,17 +198,29 @@ def pokemon_get(request, pokemon_id):
 
     return JsonResponse(zone_data)
 
-def detail(request, id):
 
-    url = f"{BASE_URL}/pokemons/{id}/"
+def detail(request, poke_id):
 
+    url = f"{BASE_URL}/pokemons/{poke_id}/"
+    
     try:
-        # Realiza la solicitud al API
         response = requests.get(url)
-        response.raise_for_status()  # Lanza un error si la respuesta no es exitosa
-        pokemon = response.json()  # Convierte la respuesta en JSON
+        response.raise_for_status()
+        pokemon = response.json()
     except requests.exceptions.RequestException:
         raise Http404("No se pudo obtener información del Pokémon.")
 
-        # Renderiza la plantilla con los datos del Pokémon
     return render(request, 'home/info.html', {'pokemon': pokemon})
+
+def whoIsThatPokemon(request):
+    random_id = random.randint(1,153)
+    api_url = f"{BASE_URL}/pokemons/{random_id}"
+
+    respons = requests.get(api_url)
+    respons.raise_for_status()
+    pokemon = respons.json()
+    context={
+        "pokemon": pokemon
+    }
+
+    return render(request, 'whoIsThatPokemon.html', context)

@@ -19,12 +19,13 @@ from django.urls import path
 from django.http import JsonResponse
 import requests
 
-from pokedex_app.views import home, proxy_api, team_detail, zone_post, pokemon_names, zone_get, tournament_get, \
-    pokemon_get, list_Pokemons
+from pokedex_app.views import home, proxy_api, team_detail, zone_post, pokemon_names, zone_get, tournament_get, pokemon_get, list_Pokemons, detail, qr, try_capture, whoIsThatPokemon
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('detail/<int:poke_id>', detail, name='detail'),
     path('pokemonName/<int:id>', pokemon_names, name='names'),
     path('api/events/', zone_post, name='zone_post'),
     path('api/zones/<str:zone_id>/', zone_get, name='zones'),
@@ -34,4 +35,7 @@ urlpatterns = [
     path('api/<str:endpoint>/<uuid:team_id>/', team_detail, name='team_detail'),
     path('api/<str:endpoint>/<uuid:zone_id>/', zone_post, name='zone_post'),
     path('pokedex/', list_Pokemons, name='pokedex'),
+    path('try_capture/<str:key>', try_capture, name='try_capture'),
+    path('qr/', qr, name='qr'),
+    path('whoIsThatPokemon/', whoIsThatPokemon, name='whoIsThatPokemon'),
 ]

@@ -1,93 +1,162 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Inicio {% endblock %}
+{% block title %}QR Scanner{% endblock %}
 {% block content %}
     <div class="row w-100 align-items-center">
-        <!-- Contenedor para el botón y el título -->
-        <div class="col-12 d-flex justify-content-between align-items-center">
-            <!-- Botón "Back" -->
-            <a href="{% url 'home' %}" style="text-decoration: none; color: inherit">
-                <button class="go-back-button ms-4"> <!-- Añadido margen izquierdo -->
-                    <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1"
-                         viewBox="0 0 1024 1024">
-                        <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
+        <div class="col-12 d-flex justify-content-between align-items-center mb-4">
+            <a href="{% url 'home' %}" class="back-link">
+                <button class="back-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
                     </svg>
                     <span>Back</span>
                 </button>
             </a>
-
-            <!-- Título centrado y de color blanco -->
-            <h1 class="centered-title mx-auto text-center text-white">QR Code Scanner</h1>
+            <h1 class="page-title">QR Scanner</h1>
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
+    <div class="scanner-container">
+        <div class="video-container">
+            <video id="video" autoplay playsinline></video>
+            <div class="scan-region"></div>
+        </div>
+        <canvas id="canvas" hidden></canvas>
+        <div class="status-message">
+            <p id="output">Scanning...</p>
         </div>
     </div>
 
-    <!-- Vídeo de la càmera per al QR scanner -->
-    <video id="video" width="300" height="200" autoplay></video>
-    <canvas id="canvas" hidden></canvas>
-    <p id="output">Scanning...</p>
+<style>
+    .back-link {
+        text-decoration: none;
+        margin-left: 1rem;
+    }
 
-    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
-    <script>
-        const video = document.getElementById('video');
-        const canvas = document.getElementById('canvas');
-        const context = canvas.getContext('2d');
-        const output = document.getElementById('output');
+    .back-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border: none;
+        background: #f8f9fa;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
 
-        navigator.mediaDevices.getUserMedia({video: {facingMode: 'environment'}})
-            .then(stream => {
-                video.srcObject = stream;
-                video.addEventListener('loadedmetadata', () => {
-                    video.play();
-                    scanQRCode();
-                });
-            })
-            .catch(err => {
-                output.textContent = `Error accessing camera: ${err}`;
-            });
+    .back-button:hover {
+        background: #e9ecef;
+    }
 
-        function scanQRCode() {
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                const code = jsQR(imageData.data, canvas.width, canvas.height);
+    .page-title {
+        color: white;
+        margin: 0;
+        text-align: center;
+        flex-grow: 1;
+        margin-right: 76px; /* Para compensar el ancho del botón back */
+    }
 
-                if (code) {
-                    try {
-                        const qrData = code.data;
-                        if (qrData) {
-                            const zone_id = qrData.split("/").pop();
+    .scanner-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
 
-                            output.textContent = `QR code ${zone_id}`;
-                            const url = "{% url 'try_capture' key='PLACEHOLDER' %}".replace('PLACEHOLDER', zone_id);
-                            window.location.href = url;
-                            return;
+    .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 1rem;
+    }
+
+    #video {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .scan-region {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 280px;
+        height: 280px;
+        border: 2px solid #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 0 0 999px rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+    }
+
+    .status-message {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 12px 24px;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+
+    #output {
+        margin: 0;
+        color: white;
+        font-size: 1rem;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+<script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const output = document.getElementById('output');
+
+    navigator.mediaDevices.getUserMedia({
+        video: { 
+            facingMode: 'environment'
+        }
+    })
+    .then(stream => {
+        video.srcObject = stream;
+        video.addEventListener('loadedmetadata', () => {
+            video.play();
+            scanQRCode();
+        });
+    })
+    .catch(err => {
+        output.textContent = `Error accessing camera: ${err}`;
+        output.style.color = '#ff4444';
+    });
+
+    function scanQRCode() {
+        if (video.readyState === video.HAVE_ENOUGH_DATA) {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+            if (code) {
+                try {
+                    const qrData = code.data;
+                    if (qrData) {
+                        const zone_id = qrData.split("/").pop();
+                        output.textContent = `QR code detected!`;
+                        
+                        // Vibración simple si está disponible
+                        if (navigator.vibrate) {
+                            navigator.vibrate(100);
                         }
-                    } catch (error) {
-                        output.textContent = "Invalid QR code format";
+
+                        const url = "{% url 'try_capture' key='PLACEHOLDER' %}".replace('PLACEHOLDER', zone_id);
+                        window.location.href = url;
+                        return;
                     }
+                } catch (error) {
+                    output.textContent = "Invalid QR code";
                 }
             }
-            requestAnimationFrame(scanQRCode);
         }
-    </script>
+        requestAnimationFrame(scanQRCode);
+    }
+</script>
 {% endblock %}

@@ -137,24 +137,53 @@
 </div>
 
 <script>
-        const searchInput = document.getElementById('input');
+const searchInput = document.getElementById('input');
+const micButton = document.querySelector('.micButton');
+let recognition;
 
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase().replace(/[^a-z0-9]/g, '');
-            const cards = document.querySelectorAll('.carta');
+if ('webkitSpeechRecognition' in window) {
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
 
-            cards.forEach(card => {
-                const pokemonName = card.dataset.pokemonName
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]/g, '');
+    recognition.onresult = (event) => {
+        const spokenText = event.results[0][0].transcript.toLowerCase();
+        searchInput.value = spokenText;
+        searchInput.dispatchEvent(new Event('input'));
+    };
 
-                if (pokemonName.includes(searchTerm)) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
+    recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+    };
 
+    micButton.addEventListener('click', () => {
+        recognition.start();
+        micButton.classList.add('listening');
+    });
+
+    recognition.onend = () => {
+        micButton.classList.remove('listening');
+    };
+} else {
+    micButton.style.display = 'none';
+}
+
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const cards = document.querySelectorAll('.carta');
+
+    cards.forEach(card => {
+        const pokemonName = card.dataset.pokemonName
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, '');
+
+        if (pokemonName.includes(searchTerm)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
 </script>
 {% endblock %}

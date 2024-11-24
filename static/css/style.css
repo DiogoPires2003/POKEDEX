@@ -2097,18 +2097,17 @@ html {
 /* Botó Go Back */
 .go-back-button {
     display: flex;
-    height: 40px; /* Alçada del botó */
-    width: 100px; /* Amplada del botó */
     align-items: center;
     justify-content: center;
-    background-color: #28a745; /* Verd */
+    height: 40px;
+    width: 140px; /* Amplada del botó */
+    background-color: #28a745; /* Groc */
     border-radius: 10px;
-    letter-spacing: 1px;
-    transition: all 0.2s linear;
-    cursor: pointer;
     border: none;
-    margin-top: 20px;
-    margin-left: 80%;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    padding: 5px; /* Espai intern */
+    overflow: hidden;
 }
 
 .go-back-button:hover {
@@ -2306,6 +2305,35 @@ html {
 }
 
 .play-game-button .pokemon-icon {
+    width: 30px; /* Amplada de la imatge */
+    height: auto; /* Manté proporcions */
+    max-height: 30px;
+    margin-right: 8px; /* Espai entre la imatge i el text */
+}
+
+/* Botó Play Game */
+.back_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 140px; /* Amplada del botó */
+    background-color: #28a745; /* Groc */
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    padding: 5px; /* Espai intern */
+    overflow: hidden;
+}
+
+.back_button:hover {
+    background-color: #228639; /* Groc més fosc en passar el cursor */
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+
+.back_button .back_icon {
     width: 30px; /* Amplada de la imatge */
     height: auto; /* Manté proporcions */
     max-height: 30px;

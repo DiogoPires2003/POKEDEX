@@ -4,12 +4,11 @@ from django.shortcuts import render
 
 BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
 
-
+team_id = "8c4d959b-64bb-4952-9f23-b0f76d93c733"
 # Create your views here.
 def home(request):
 
     # URL del endpoint para el equipo
-    team_id = "8c4d959b-64bb-4952-9f23-b0f76d93c733"
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/teams/{team_id}"
 
     try:
@@ -104,10 +103,17 @@ def list_Pokemons(request):
 
     api_url = f"{BASE_URL}/pokemons"
 
+    api_pokemons_obtained = f"{BASE_URL}/teams/{team_id}"
+
     try:
         response = requests.get(api_url)
         response.raise_for_status()  # Lanza excepción para errores HTTP
         pokemons_data = response.json()  # Decodifica el JSON
+        pokemons_response = requests.get(api_pokemons_obtained)
+        pokemons_response.raise_for_status()
+        pokemons_obtained = pokemons_response.json()
+        pokemonsId = [pokemon['pokemon_id'] for pokemon in pokemons_obtained.get("captured_pokemons", [])]
+
 
 
     except requests.exceptions.RequestException as e:
@@ -115,11 +121,11 @@ def list_Pokemons(request):
         print(f"Error al conectar con la API: {e}")
 
     context = {
-        "pokemons": pokemons_data
+        "pokemons": pokemons_data,
+        "captured_pokemons": pokemonsId
     }
 
     return render(request, 'Pokedex.html', context)
-
 
 
 def zone_get(request, zone_id):

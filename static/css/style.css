@@ -478,6 +478,14 @@ html {
   border: 2px solid white;
     filter: brightness(0%);
 }
+.carta-imatge-obtained {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+
+}
 
 .carta-nom {
   color: white;

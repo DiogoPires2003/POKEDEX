@@ -1,6 +1,7 @@
 import requests
 from django.http import JsonResponse
 from django.shortcuts import render
+import random
 
 BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
 
@@ -184,3 +185,15 @@ def detail(request, poke_id):
 
     return render(request, 'home/info.html', {'pokemon': pokemon})
 
+def whoIsThatPokemon(request):
+    random_id = random.randint(1,153)
+    api_url = f"{BASE_URL}/pokemons/{random_id}"
+
+    respons = requests.get(api_url)
+    respons.raise_for_status()
+    pokemon = respons.json()
+    context={
+        "pokemon": pokemon
+    }
+
+    return render(request, 'whoIsThatPokemon.html', context)

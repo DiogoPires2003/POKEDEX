@@ -487,8 +487,56 @@ html {
   border-radius: 50%;
   border: 2px solid white;
 
+}.container-who {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;                 /* Ocupar todo el ancho */
+    height: 100vh;               /* Ocupar la altura completa de la ventana */
+    padding: 20px;
+    box-sizing: border-box;      /* Incluir padding en el cálculo del tamaño */
 }
 
+.carta-contenidor-who {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;                  /* Usar un ancho relativo */
+    max-width: 400px;            /* Limitar el tamaño máximo */
+    height: auto;                /* Ajustar altura automáticamente */
+    aspect-ratio: 1;             /* Mantener proporciones cuadradas */
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.carta-imatge-who {
+    width: 80%;                  /* Imagen ocupa el 80% del ancho del contenedor */
+    max-width: 200px;            /* Máximo tamaño de la imagen */
+    height: auto;                /* Mantener proporciones */
+    object-fit: cover;           /* Asegura que la imagen no se deforme */
+    border: 3px solid transparent; /* Borde transparente inicial */
+    filter: brightness(0%);
+}
+
+.carta-imatge-obtained-who {
+    width: 80%;                  /* Misma anchura que la imagen oculta */
+    max-width: 200px;
+    height: auto;
+    object-fit: cover;
+    border: 3px solid transparent; /* Borde transparente */
+    filter: none;                /* Imagen normal */
+}
+
+.carta-nom-who {
+    font-size: 1.5em;            /* Tamaño relativo del texto */
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
 .carta-nom {
   color: white;
   font-size: 1.2em;
@@ -3503,4 +3551,38 @@ html {
     border-radius: 50px;
     height: 100%;
     text-align: center;
+}
+
+/* Botó Go Back */
+.go-back-button {
+  display: flex;
+  height: 40px; /* Alçada del botó */
+  width: 100px; /* Amplada del botó */
+  align-items: center;
+  justify-content: center;
+  background-color: #28a745; /* Verd */
+  border-radius: 10px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  margin-top: 20px;
+  margin-left: 80%;
+}
+
+.go-back-button:hover {
+  background-color: #218838; /* Verd més fosc en passar el cursor */
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+}
+
+.go-back-button > svg {
+  margin-right: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+}
+
+.go-back-button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
 }

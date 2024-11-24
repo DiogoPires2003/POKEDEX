@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content %}
+
+    <div class="card mx-auto  w-75 h-50 m-5">
+        <div class="loader_capture mx-auto mt-5 "></div>
+        {% if status_code == 200 %}
+            <div class="mt-5 mx-auto h2">Atrapado.</div>
+        {% else %}
+            <div class="mt-5 mx-auto h2">Se ha escapado.</div>
+        {% endif %}
+    </div>
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        (async function () {
+            await sleep(1050); // 30 segundos
+            const url = "{% url 'pokedex' %}";
+            window.location.href = url;
+        })();
+    </script>
+
+{% endblock %}

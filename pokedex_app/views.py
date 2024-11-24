@@ -1,7 +1,7 @@
 from lib2to3.fixes.fix_input import context
 
 import requests
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import render
 import random
 

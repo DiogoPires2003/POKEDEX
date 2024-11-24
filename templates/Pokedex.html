@@ -56,45 +56,51 @@
     <div class="carta {{ pokemon.types.0.type.name }} {{ pokemon.types.1.type.name }}"
          data-pokemon-name="{{ pokemon.name }}">
         <div class="carta-contenidor">
-            <img src={% static "img/hackduck.png" %} alt = "Imagen de {{ pokemon.name }}" class="
-            carta-imatge-obtained">
-            <h2 class="carta-nom">{{ pokemon.name }}</h2>
-            <p class="carta-id">ID: {{ pokemon.id }}</p>
-            <ul class="carta-tipus">
-                {% for type in pokemon.types %}
-                <li>{{ type.type.name }}</li>
-                {% endfor %}
-            </ul>
+            <a href="{% url 'detail' pokemon.id %}" style="text-decoration: none; color: inherit">
+                <img src={% static "img/hackduck.png" %} alt = "Imagen de {{ pokemon.name }}" class="
+                carta-imatge-obtained">
+                <h2 class="carta-nom">{{ pokemon.name }}</h2>
+                <p class="carta-id">ID: {{ pokemon.id }}</p>
+                <ul class="carta-tipus">
+                    {% for type in pokemon.types %}
+                    <li>{{ type.type.name }}</li>
+                    {% endfor %}
+                </ul>
+            </a>
         </div>
     </div>
     {% elif pokemon.id == 153 %}
     <div class="carta {{ pokemon.types.0.type.name }} {{ pokemon.types.1.type.name }}"
          data-pokemon-name="{{ pokemon.name }}">
         <div class="carta-contenidor">
-            <img src={% static "img/cyberduck.png" %} alt = "Imagen de {{ pokemon.name }}" class="
-            carta-imatge-obtained">
-            <h2 class="carta-nom">{{ pokemon.name }}</h2>
-            <p class="carta-id">ID: {{ pokemon.id }}</p>
-            <ul class="carta-tipus">
-                {% for type in pokemon.types %}
-                <li>{{ type.type.name }}</li>
-                {% endfor %}
-            </ul>
+            <a href="{% url 'detail' pokemon.id %}" style="text-decoration: none; color: inherit">
+                <img src={% static "img/cyberduck.png" %} alt = "Imagen de {{ pokemon.name }}" class="
+                carta-imatge-obtained">
+                <h2 class="carta-nom">{{ pokemon.name }}</h2>
+                <p class="carta-id">ID: {{ pokemon.id }}</p>
+                <ul class="carta-tipus">
+                    {% for type in pokemon.types %}
+                    <li>{{ type.type.name }}</li>
+                    {% endfor %}
+                </ul>
+            </a>
         </div>
     </div>
     {% else %}
     <div class="carta {{ pokemon.types.0.type.name }} {{ pokemon.types.1.type.name }}"
          data-pokemon-name="{{ pokemon.name }}">
         <div class="carta-contenidor">
-            <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}"
-                 class="carta-imatge-obtained">
-            <h2 class="carta-nom">{{ pokemon.name }}</h2>
-            <p class="carta-id">ID: {{ pokemon.id }}</p>
-            <ul class="carta-tipus">
-                {% for type in pokemon.types %}
-                <li>{{ type.type.name }}</li>
-                {% endfor %}
-            </ul>
+            <a href="{% url 'detail' pokemon.id %}" style="text-decoration: none; color: inherit">
+                <img src="{{ pokemon.image }}" alt="Imagen de {{ pokemon.name }}"
+                     class="carta-imatge-obtained">
+                <h2 class="carta-nom">{{ pokemon.name }}</h2>
+                <p class="carta-id">ID: {{ pokemon.id }}</p>
+                <ul class="carta-tipus">
+                    {% for type in pokemon.types %}
+                    <li>{{ type.type.name }}</li>
+                    {% endfor %}
+                </ul>
+            </a>
         </div>
     </div>
     {% endif %}
@@ -155,6 +161,10 @@
                 }
             });
         });
+
+
+
+
 
 </script>
 {% endblock %}

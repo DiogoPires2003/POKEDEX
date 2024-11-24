@@ -23,3 +23,36 @@ video {
     border: 1px solid #b2b2b2 !important;
     border-radius: 0.25em;
 }
+/* Botó Go Back */
+.go-back-button {
+    display: flex;
+    height: 40px; /* Alçada del botó */
+    width: 100px; /* Amplada del botó */
+    align-items: center;
+    justify-content: center;
+    background-color: #28a745; /* Verd */
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    margin-top: 20px;
+    margin-left: 80%;
+}
+
+.go-back-button:hover {
+    background-color: #218838; /* Verd més fosc en passar el cursor */
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+
+.go-back-button > svg {
+    margin-right: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+}
+
+.go-back-button:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+}

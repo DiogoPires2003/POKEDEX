@@ -1,5 +1,5 @@
 import requests
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse
 from django.shortcuts import render
 
 BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
@@ -169,17 +169,7 @@ def pokemon_get(request, pokemon_id):
 
     return JsonResponse(zone_data)
 
-def detail(request, id):
 
-    url = f"{BASE_URL}/pokemons/{id}/"
+def detail(request,id):
+    return render(request, 'home/info.html')
 
-    try:
-        # Realiza la solicitud al API
-        response = requests.get(url)
-        response.raise_for_status()  # Lanza un error si la respuesta no es exitosa
-        pokemon = response.json()  # Convierte la respuesta en JSON
-    except requests.exceptions.RequestException:
-        raise Http404("No se pudo obtener información del Pokémon.")
-
-        # Renderiza la plantilla con los datos del Pokémon
-    return render(request, 'home/info.html', {'pokemon': pokemon})

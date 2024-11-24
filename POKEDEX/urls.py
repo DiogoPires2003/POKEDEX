@@ -16,15 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.http import JsonResponse
-import requests
 
 from pokedex_app.views import home, proxy_api, team_detail, zone_post, pokemon_names, zone_get, tournament_get, \
-    pokemon_get, list_Pokemons
+    pokemon_get, list_Pokemons, detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('detail/<int:poke_id>', detail, name='detail'),
     path('pokemonName/<int:id>', pokemon_names, name='names'),
     path('api/events/', zone_post, name='zone_post'),
     path('api/zones/<str:zone_id>/', zone_get, name='zones'),

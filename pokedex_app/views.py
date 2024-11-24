@@ -5,9 +5,10 @@ from django.shortcuts import render
 BASE_URL = "https://hackeps-poke-backend.azurewebsites.net"
 
 team_id = "8c4d959b-64bb-4952-9f23-b0f76d93c733"
+
+
 # Create your views here.
 def home(request):
-
     # URL del endpoint para el equipo
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/teams/{team_id}"
 
@@ -52,7 +53,6 @@ def team_detail(request, endpoint, team_id):
     return JsonResponse(team_data, safe=False)
 
 
-
 def zone_post(request):
     if request.method == "POST":
         zone_id = request.POST.get("zone_id")
@@ -80,6 +80,7 @@ def zone_post(request):
     else:
         return JsonResponse({"error": "Método no permitido, solo POST es soportado."}, status=405)
 
+
 def pokemon_names(request, id):
     api_url = f"https://hackeps-poke-backend.azurewebsites.net/pokemons/{id}"
 
@@ -97,10 +98,10 @@ def pokemon_names(request, id):
     context = {
         "pokemon_name": pokemon_name
     }
-    return render(request,'home/pokemonName.html',context)
+    return render(request, 'home/pokemonName.html', context)
+
 
 def list_Pokemons(request):
-
     api_url = f"{BASE_URL}/pokemons"
 
     api_pokemons_obtained = f"{BASE_URL}/teams/{team_id}"
@@ -169,9 +170,10 @@ def pokemon_get(request, pokemon_id):
 
     return JsonResponse(zone_data)
 
-def detail(request, id):
 
-    url = f"{BASE_URL}/pokemons/{id}/"
+def detail(request, poke_id):
+
+    url = f"{BASE_URL}/pokemons/{poke_id}/"
 
     try:
         # Realiza la solicitud al API

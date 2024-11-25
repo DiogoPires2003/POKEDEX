@@ -1,3 +1,7 @@
+# Proyecto HACKEPS 2024, empresa GFT
+
+
+
 # Presentación del Proyecto: ¡Nuestra Pokédex! 🎮✨
 
 Hace 24 horas, decidimos enfrentarnos a un emocionante reto: **crear nuestra propia Pokédex interactiva**, diseñada no solo para explorar el mundo Pokémon, sino también para divertirnos en el proceso. El resultado es un proyecto que combina nostalgia, tecnología y creatividad. ¡Y estamos emocionados de compartirlo con vosotros! 🚀
